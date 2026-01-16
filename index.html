@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UltimateAI - Matematik & Genel Asistan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <div class="orbit"></div>
+                    <div class="orbit"></div>
+                    <div class="core">AI</div>
+                </div>
+                <div>
+                    <h1>UltimateAI</h1>
+                    <p class="tagline">Matematik Uzmanı & Genel Asistan</p>
+                </div>
+            </div>
+            
+            <div class="mode-switch">
+                <button class="mode-btn active" data-mode="math">
+                    <span class="icon">∫</span>
+                    <span>Matematik</span>
+                </button>
+                <button class="mode-btn" data-mode="chat">
+                    <span class="icon">💬</span>
+                    <span>Sohbet</span>
+                </button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-num" id="mathCount">0</span>
+                    <span class="stat-label">Matematik</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num" id="chatCount">0</span>
+                    <span class="stat-label">Sohbet</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="ctrl-btn" id="themeBtn" title="Tema">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                    </svg>
+                </button>
+                <button class="ctrl-btn" id="clearBtn" title="Temizle">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Math Mode Sidebar -->
+                <div class="sidebar-content" id="mathSidebar">
+                    <div class="section">
+                        <h3>📐 Matematik</h3>
+                        <button class="menu-item active">∫ İntegral</button>
+                        <button class="menu-item">d/dx Türev</button>
+                        <button class="menu-item">lim Limit</button>
+                        <button class="menu-item">= Denklem</button>
+                        <button class="menu-item">∑ Toplam/Seri</button>
+                    </div>
+                    
+                    <div class="section">
+                        <h3>🔬 Fen Bilimleri</h3>
+                        <button class="menu-item">⚛️ Fizik</button>
+                        <button class="menu-item">🧪 Kimya</button>
+                        <button class="menu-item">🧬 Biyoloji</button>
+                    </div>
+                    
+                    <div class="section">
+                        <h3>💡 Örnekler</h3>
+                        <div class="example" data-text="integral x^2 + 3x dx">∫ x² + 3x</div>
+                        <div class="example" data-text="turev sin(x) * cos(x)">türev sin·cos</div>
+                        <div class="example" data-text="coz x^2 - 4 = 0">x² - 4 = 0</div>
+                        <div class="example" data-text="F = m * a hesapla">Fizik: F=ma</div>
+                    </div>
+                </div>
+                
+                <!-- Chat Mode Sidebar -->
+                <div class="sidebar-content hidden" id="chatSidebar">
+                    <div class="section">
+                        <h3>💬 Sohbet Konuları</h3>
+                        <button class="menu-item">🌍 Genel Bilgi</button>
+                        <button class="menu-item">📚 Edebiyat</button>
+                        <button class="menu-item">🎨 Sanat</button>
+                        <button class="menu-item">💻 Teknoloji</button>
+                        <button class="menu-item">🎮 Eğlence</button>
+                        <button class="menu-item">🍳 Yemek</button>
+                        <button class="menu-item">🏃 Spor</button>
+                        <button class="menu-item">🌟 Motivasyon</button>
+                    </div>
+                    
+                    <div class="section">
+                        <h3>💡 Örnek Sorular</h3>
+                        <div class="example" data-text="Yapay zeka nedir?">Yapay zeka nedir?</div>
+                        <div class="example" data-text="Bana bir şiir yaz">Şiir yaz</div>
+                        <div class="example" data-text="Sağlıklı yaşam tavsiyeleri">Sağlık tavsiyeleri</div>
+                        <div class="example" data-text="Komik bir fıkra anlat">Fıkra anlat</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <main class="chat-area">
+                <div class="messages-container" id="messagesContainer">
+                    <!-- Welcome Screen -->
+                    <div class="welcome" id="welcomeScreen">
+                        <div class="welcome-icon">
+                            <div class="w-ring"></div>
+                            <div class="w-ring"></div>
+                            <div class="w-center">🤖</div>
+                        </div>
+                        <h2>UltimateAI'ya Hoş Geldiniz</h2>
+                        <p>Matematik uzmanı ve genel asistanınız</p>
+                        
+                        <div class="feature-cards">
+                            <div class="f-card">
+                                <div class="f-icon">∫</div>
+                                <h4>İleri Matematik</h4>
+                                <p>İntegral, türev, limit, denklem çözümü</p>
+                            </div>
+                            <div class="f-card">
+                                <div class="f-icon">🔬</div>
+                                <h4>Fen Bilimleri</h4>
+                                <p>Fizik, kimya, biyoloji problemleri</p>
+                            </div>
+                            <div class="f-card">
+                                <div class="f-icon">💬</div>
+                                <h4>Genel Sohbet</h4>
+                                <p>Her konuda akıllı konuşma</p>
+                            </div>
+                            <div class="f-card">
+                                <div class="f-icon">🎓</div>
+                                <h4>Eğitim</h4>
+                                <p>Öğrenme ve öğretme desteği</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Messages -->
+                    <div id="messages"></div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <div class="input-tools">
+                        <button class="tool" data-symbol="∫">∫</button>
+                        <button class="tool" data-symbol="∂">∂</button>
+                        <button class="tool" data-symbol="∑">∑</button>
+                        <button class="tool" data-symbol="√">√</button>
+                        <button class="tool" data-symbol="^">^</button>
+                        <button class="tool" data-symbol="π">π</button>
+                        <button class="tool" data-symbol="∞">∞</button>
+                        <span class="char-count"><span id="charCount">0</span>/500</span>
+                    </div>
+                    
+                    <div class="input-box">
+                        <textarea 
+                            id="userInput" 
+                            placeholder="Mesajınızı yazın... (Matematik: 'integral x^2' veya Sohbet: 'Merhaba')"
+                            maxlength="500"
+                        ></textarea>
+                        <button class="send-btn" id="sendBtn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="mode-indicator">
+                        <span class="mode-badge" id="modeBadge">
+                            <span class="badge-dot"></span>
+                            Matematik Modu
+                        </span>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="math-solver.js"></script>
+    <script src="chat-ai.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
